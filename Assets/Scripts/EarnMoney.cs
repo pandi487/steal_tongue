@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EarnMoney : MonoBehaviour
+public class EarnMoney
 {
-    // Start is called before the first frame update
-    void Start()
+    public float Earn(float currentMoney = 0f, float increaseAmount = 1f)
     {
-        
+        return currentMoney + increaseAmount;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -1,9 +1,12 @@
 ﻿using System;
 using UnityEngine;
 
+[Serializable]
+[SelectionBase]
+[DisallowMultipleComponent]
 public class TouchSystem : MonoBehaviour
 {
-    public Action<TouchPhase> GetAction;
+    public static Action<TouchPhase> GetAction;
 
     private void OnEnable()
     {
@@ -22,6 +25,7 @@ public class TouchSystem : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
         {
+            GetAction?.Invoke(TouchPhase.Began);
         }
 #endif
         for (int i = 0; i < Input.touchCount; i++)
