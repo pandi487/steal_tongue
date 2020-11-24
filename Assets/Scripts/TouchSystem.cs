@@ -22,7 +22,8 @@ public class TouchSystem : MonoBehaviour
 
     void Update()
     {
-#if UNITY_EDITOR
+#if UNITY_EDITOR 
+        // 유니티에서만 실행
         if (Input.GetMouseButtonDown(0))
         {
             GetAction?.Invoke(TouchPhase.Began);
