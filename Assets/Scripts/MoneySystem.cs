@@ -7,11 +7,9 @@ public class MoneySystem : MonoBehaviour
 {
     public float m_fCurrentMoney = 0f; //현재 머니
     public float m_fIncreaseMoneyAmount = 10f; // 증가 머니
-    public string m_fCurrentMoneyText; // 현재 머니 텍스트
+    public string m_sCurrentMoneyText; // 현재 머니 텍스트
 
     private EarnMoney earnMoney = null;
-
-    [SerializeField] private float Division = 0;// 속도
 
     public int m_fUpgradeMoney = 0; // 머니 업그레이드 비용
     public string m_fUpgradeMoneyText; // 머니 업그레이드 텍스트
@@ -44,22 +42,13 @@ public class MoneySystem : MonoBehaviour
    //  ---10초마다 머니 생성 실패
     void Start() 
     {
-        StartCoroutine(NeglectRoutine());
-    }
 
-    IEnumerator NeglectRoutine()
-    {
-        while(true)
-        {
-            m_fCurrentMoney += 1;
-            yield return new WaitForSeconds(10f / Division); // + Division 감소 // - Division 증가 
-        }
     }
     
     void Update()
     {
-        m_fCurrentMoneyText = m_fCurrentMoney.ToString("N0");
-        GetComponent<UnityEngine.UI.Text>().text = m_fCurrentMoneyText;
+        m_sCurrentMoneyText = m_fCurrentMoney.ToString("N0");
+        GetComponent<UnityEngine.UI.Text>().text = m_sCurrentMoneyText;
        // m_fUpgradeMoneyText = UpgradeSystem.m_fUpgradeMoney.ToString("NO");
     }
 
