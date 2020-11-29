@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [Serializable]
 [SelectionBase]
@@ -8,27 +9,18 @@ public class TouchSystem : MonoBehaviour
 {
     public static Action<TouchPhase> GetAction;
 
-    private void OnEnable()
-    {
-        GetAction += (state) =>
-        {
-            if (state == TouchPhase.Began)
-            {
-                Debug.Log("Start");
-            }
-        };
-    }
-
-
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+            
 #if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
         {
             GetAction?.Invoke(TouchPhase.Began);
         }
-#endif
-        for (int i = 0; i < Input.touchCount; i++)
+#else
+for (int i = 0; i < Input.touchCount; i++)
         {
             Touch touch = Input.GetTouch(i);
             switch (touch.phase)
@@ -53,5 +45,7 @@ public class TouchSystem : MonoBehaviour
             }
             GetAction?.Invoke(touch.phase);
         }
+#endif
+
     }
 }
