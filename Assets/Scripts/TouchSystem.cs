@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,6 +11,9 @@ public class TouchSystem : MonoBehaviour
 
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+            
 #if UNITY_EDITOR 
         // 유니티에서만 실행
         if (Input.GetMouseButtonDown(0))
