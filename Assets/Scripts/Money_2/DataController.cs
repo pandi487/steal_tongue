@@ -22,7 +22,7 @@ public class DataController : MonoBehaviour
 
     private ItemButton[] itemButtons;
     private int m_gold = 0;
-    private int m_goldPerClick = 0;
+    public int m_goldPerClick = 0;
 
     private void Awake()
     {
@@ -139,8 +139,7 @@ public class DataController : MonoBehaviour
     [ContextMenu("RESET_GOLD_DATA")]
     public void ResetGoldData()
     {
-        PlayerPrefs.DeleteKey("Gold");
-        PlayerPrefs.DeleteKey("GoldPerClick");
+        PlayerPrefs.DeleteAll();
     }
 
     public int GetGoldPerSec()

@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
 {
-    public Text upgradeDisplayer;
+    //Cost = 비용
+    //Gold = 증가
+    public Text upgradeDisplayer_Cost;
+    public Text upgradeDisplayer_Level;
+    public Text upgradeDisplayer_NextGold;
 
     public string upgradeName;
 
@@ -53,11 +57,12 @@ public class UpgradeButton : MonoBehaviour
 
     public void UpdateUI()
     {
-        upgradeDisplayer.text = upgradeName + "\nCost: " + currentCost + "\nLevel: " + level +
-            "\nNext New GoldPerClick: " + goldByUpgrade;
+        upgradeDisplayer_Cost.text = " ";
+        upgradeDisplayer_Level.text =  "Lv." + level;
+        upgradeDisplayer_NextGold.text =  "골드증가 + " + goldByUpgrade;
     }
 
-    [ContextMenu("RESET_UPGRADE_BUTTON_DATA")]
+    [ContextMenu("RESET_UPGRADE_BUTTON_DATA")]  
     public void ResetUpgradeButtonData()
     {
         DataController.GetInstance().ResetUpgradeButtonData(this);

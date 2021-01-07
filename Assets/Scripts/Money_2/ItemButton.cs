@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class ItemButton : MonoBehaviour
 {
-    public Text itemDisplayer;
+    public Text itemDisplayer_Level;
+    public Text itemDisplayer_Cost;
+    public Text itemDisplayer_Sec;
+    public Text itemDisplayer_ispurchased;
 
     public string itemName;
 
@@ -72,7 +75,11 @@ public class ItemButton : MonoBehaviour
 
     public void UpdateUI()
     {
-        itemDisplayer.text = itemName + "\nLevel: " + level + "\nCurrentCost: " + currentCost + "\nGold Per Sec: " + goldPerSec
-            + "\nisPurchased: " + isPurchased;
+        itemDisplayer_Level.text =  "Lv. " + level;
+        itemDisplayer_Cost.text =  "CurrentCost: " + currentCost;
+        itemDisplayer_Sec.text =  "Gold Per Sec: " + goldPerSec;
+        itemDisplayer_ispurchased.text =  "isPurchased: " + isPurchased;
     }
+
+
 }

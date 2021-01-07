@@ -9,10 +9,10 @@ public class PowerUpSystem : MonoBehaviour
     public string TextTimer; // 머니 업그레이드 텍스트
 
     bool OnTimer;
-    public MoneySystem moneySystem;
+    public DataController dataController;
 
     IEnumerator _ETimer;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -36,14 +36,14 @@ public class PowerUpSystem : MonoBehaviour
     }
     IEnumerator _Timer()
     {
-        moneySystem.m_fIncreaseMoneyAmount *= 10;
+         dataController.m_goldPerClick  *= 10;
         while (Timer > 0)
         {
             Timer -= Time.deltaTime;
 
             yield return null;
         }
-        moneySystem.m_fIncreaseMoneyAmount /= 10;
+        dataController.m_goldPerClick /= 10;
         Timer = 10;
 
         for (float i = 0; i < 10f; i += Time.deltaTime)
